@@ -1,0 +1,35 @@
+:root {
+    --grid-size: 3em
+}
+
+body {
+    width: clamp(360px, 50%, 640px);
+    margin: auto;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, var(--grid-size));
+    grid-template-rows: repeat(3, var(--grid-size));
+    justify-content: center;
+    button {
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        cursor: pointer;
+        font-size: 2rem;
+        &:hover{
+            background-color: #ddd;
+        }
+    }
+
+    button:nth-child(3n+2){
+        border-left: 1px solid;
+        border-right: 1px solid;
+    }
+
+    button:nth-child(n+4):nth-child(-n+6){
+        border-bottom: 1px solid;
+        border-top: 1px solid;
+    }
+}
