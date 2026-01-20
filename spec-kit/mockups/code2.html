@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Load Recipe Entry - ReloadLog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec49",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102215",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>body {
+    font-family: "Space Grotesk", sans-serif
+    }
+.form-input:focus {
+    border-color: #13ec49 !important;
+    ring-color: #13ec49 !important
+    }
+select {
+    appearance: none;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBKkafjYj1n2rU-bT_Y58TmuZZ6IMh_Evec75EVcpryzENkX-5pe0dZzzsUcMKC7R5CeoAWqRT7Oi1DmHpGhk4X0engLlyQXwgCp03s1zvNk8gsu7AmKWEUi4Bmh6mzwXu7ZeWtdonH1CdO2EzGjy4hiILSGIli0ypYL6bwWLq7TowGANJSN8LTjnwNGYhmHuzlWMbwKLF3eDksyfx_k-G65AX9wi9KRHvXyRspY-4aNMEWG3Q1YTUk9KogaQJ9BtIk-We54yxXKLz4);
+    background-repeat: no-repeat;
+    background-position: right 1rem center
+    }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#23482c] px-6 lg:px-10 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] font-display">ReloadLog</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-medium" href="#">Recipes</a>
+<a class="text-slate-600 dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-slate-600 dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Analysis</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 dark:text-[#92c9a0] flex border-none bg-slate-100 dark:bg-[#23482c] items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-[#23482c] text-slate-900 dark:text-white focus:ring-0 h-full placeholder:text-slate-400 dark:placeholder:text-[#92c9a0] px-4 rounded-r-lg text-sm" placeholder="Search components..." value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar with green accent" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLL-UAdB2vwhLt4gIO-4M0OQS9yCvfY2sf0lKyPumTgZi9YGUuJwMQIALz1pr_6ZlmA9xc-Aj_-DBPISLfKe2EQ0ywRILWhvtdCiJ6ksfr5eRA2ukvXqRnDHfnaquAGxvCqgG1o2kmYqEIYyW51buM90TGxzjuEfc_I5OvnafbauAjbgm12mXf1reBOmZi6MtvzNZoKxo5Fz5l7zLw8PLfwVFhkrGd8xIscNg9hBdcaCFNvrs7xO6pzR7qqLi58x_bLbaMhKPTqtH-");'></div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-4 lg:px-10 py-8">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-6">
+<a class="text-slate-500 dark:text-[#92c9a0] text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<span class="text-slate-400 dark:text-[#92c9a0] text-sm font-medium">/</span>
+<a class="text-slate-500 dark:text-[#92c9a0] text-sm font-medium hover:text-primary transition-colors" href="#">Recipes</a>
+<span class="text-slate-400 dark:text-[#92c9a0] text-sm font-medium">/</span>
+<span class="text-slate-900 dark:text-white text-sm font-medium">New Recipe</span>
+</div>
+<!-- Page Heading -->
+<div class="mb-8">
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] mb-2 font-display">New Load Recipe Entry</h1>
+<p class="text-slate-600 dark:text-[#92c9a0] text-base font-normal">Enter precise component data and measurements for your ammunition load.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Form Details -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Section 1: Components -->
+<section class="bg-white dark:bg-[#193320]/30 rounded-xl border border-slate-200 dark:border-[#23482c] p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="flex items-center justify-center size-8 rounded-full bg-primary text-background-dark font-bold text-sm">1</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold font-display">Components</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-slate-700 dark:text-white text-sm font-semibold">Case Brand/Type</label>
+<select class="form-input w-full rounded-lg text-slate-900 dark:text-white border border-slate-200 dark:border-[#32673f] bg-slate-50 dark:bg-[#193320] h-12 px-4 focus:ring-primary focus:border-primary">
+<option value="">Select Brass</option>
+<option>Lapua - .308 Win</option>
+<option>Starline - .308 Win</option>
+<option>Winchester - .308 Win</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-slate-700 dark:text-white text-sm font-semibold">Primer Brand/Type</label>
+<select class="form-input w-full rounded-lg text-slate-900 dark:text-white border border-slate-200 dark:border-[#32673f] bg-slate-50 dark:bg-[#193320] h-12 px-4">
+<option value="">Select Primer</option>
+<option>CCI #200 Large Rifle</option>
+<option>Federal Gold Medal GM210M</option>
+<option>Remington 9 1/2</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-slate-700 dark:text-white text-sm font-semibold">Powder Brand</label>
+<select class="form-input w-full rounded-lg text-slate-900 dark:text-white border border-slate-200 dark:border-[#32673f] bg-slate-50 dark:bg-[#193320] h-12 px-4">
+<option value="">Select Powder</option>
+<option>Hodgdon Varget</option>
+<option>Vihtavuori N140</option>
+<option>Alliant RL-15</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-slate-700 dark:text-white text-sm font-semibold">Bullet Weight/Type</label>
+<select class="form-input w-full rounded-lg text-slate-900 dark:text-white border border-slate-200 dark:border-[#32673f] bg-slate-50 dark:bg-[#193320] h-12 px-4">
+<option value="">Select Bullet</option>
+<option>Sierra MatchKing 175gr HPBT</option>
+<option>Berger 175gr VLD Target</option>
+<option>Hornady 178gr ELD-X</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Section 2: Measurements -->
+<section class="bg-white dark:bg-[#193320]/30 rounded-xl border border-slate-200 dark:border-[#23482c] p-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="flex items-center justify-center size-8 rounded-full bg-primary text-background-dark font-bold text-sm">2</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold font-display">Measurements</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-2">
+<label class="text-slate-700 dark:text-white text-sm font-semibold">Charge Weight</label>
+<div class="relative">
+<input class="form-input w-full rounded-lg text-slate-900 dark:text-white border border-slate-200 dark:border-[#32673f] bg-slate-50 dark:bg-[#193320] h-12 px-4 pr-12 font-mono" placeholder="0.0" step="0.1" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-[#92c9a0] text-sm">gr</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-slate-700 dark:text-white text-sm font-semibold">Overall Length (OAL)</label>
+<div class="relative">
+<input class="form-input w-full rounded-lg text-slate-900 dark:text-white border border-slate-200 dark:border-[#32673f] bg-slate-50 dark:bg-[#193320] h-12 px-4 pr-12 font-mono" placeholder="0.000" step="0.001" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-[#92c9a0] text-sm">in</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-slate-700 dark:text-white text-sm font-semibold">Seating Depth</label>
+<div class="relative">
+<input class="form-input w-full rounded-lg text-slate-900 dark:text-white border border-slate-200 dark:border-[#32673f] bg-slate-50 dark:bg-[#193320] h-12 px-4 pr-12 font-mono" placeholder="0.000" step="0.001" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-[#92c9a0] text-sm">in</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Safety & Actions -->
+<div class="space-y-8">
+<!-- Section 3: Safety Check -->
+<section class="bg-white dark:bg-[#193320]/30 rounded-xl border border-slate-200 dark:border-[#23482c] p-6 flex flex-col h-full">
+<div class="flex items-center gap-3 mb-6">
+<span class="flex items-center justify-center size-8 rounded-full bg-primary text-background-dark font-bold text-sm">3</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold font-display">Safety Check</h2>
+</div>
+<div class="flex-grow flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-slate-200 dark:border-[#32673f] rounded-lg mb-6">
+<span class="material-symbols-outlined text-5xl text-primary mb-4 opacity-50">verified_user</span>
+<p class="text-slate-500 dark:text-[#92c9a0] text-sm mb-2">Ready to validate load data against manufacturer specs</p>
+<div class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full uppercase tracking-wider mb-6">Status: Pending</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-bold py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2 group shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-lg">fact_check</span>
+                            Validate Load
+                        </button>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs font-medium text-slate-500 dark:text-[#92c9a0]">
+<span>Min Charge: -- gr</span>
+<span>Max Charge: -- gr</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-[#23482c] h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[0%]"></div>
+</div>
+</div>
+</section>
+<!-- Global Actions -->
+<div class="flex flex-col gap-3">
+<button class="w-full bg-primary text-background-dark font-bold py-4 px-6 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/20">
+                        Save Load Recipe
+                    </button>
+<button class="w-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white font-bold py-4 px-6 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                        Cancel Changes
+                    </button>
+</div>
+<!-- Technical Specs Note -->
+<div class="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-blue-500">info</span>
+<div>
+<p class="text-blue-700 dark:text-blue-300 text-xs font-bold uppercase mb-1">Technical Notice</p>
+<p class="text-blue-600 dark:text-blue-400 text-sm">All measurements are stored using tabular figures for maximum data precision in reports.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Meta -->
+<footer class="max-w-[1200px] mx-auto px-4 lg:px-10 py-8 border-t border-slate-200 dark:border-[#23482c] mt-12 mb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="text-slate-700 dark:text-white text-sm font-semibold">Notes &amp; Observations</label>
+<textarea class="form-input w-full rounded-lg text-slate-900 dark:text-white border border-slate-200 dark:border-[#32673f] bg-slate-50 dark:bg-[#193320] h-32 px-4 py-3 focus:ring-primary focus:border-primary placeholder:text-slate-400 dark:placeholder:text-[#92c9a0]/50" placeholder="Add specific environmental factors or rifle configuration notes..."></textarea>
+</div>
+<div class="flex flex-col justify-end space-y-4">
+<div class="flex justify-between items-center p-4 bg-slate-50 dark:bg-[#193320] rounded-lg border border-slate-200 dark:border-[#32673f]">
+<span class="text-slate-500 dark:text-[#92c9a0] text-sm">Created Date</span>
+<span class="text-slate-900 dark:text-white font-medium">October 24, 2023</span>
+</div>
+<div class="flex justify-between items-center p-4 bg-slate-50 dark:bg-[#193320] rounded-lg border border-slate-200 dark:border-[#32673f]">
+<span class="text-slate-500 dark:text-[#92c9a0] text-sm">Last Modified</span>
+<span class="text-slate-900 dark:text-white font-medium">--</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

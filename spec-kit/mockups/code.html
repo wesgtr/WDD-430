@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReloadLog Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec49",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102215",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="w-64 border-r border-slate-200 dark:border-[#23482c] bg-white dark:bg-[#112215] flex flex-col shrink-0">
+<div class="p-6 flex flex-col h-full justify-between">
+<div class="space-y-8">
+<!-- Brand -->
+<div class="flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-background-dark">
+<span class="material-symbols-outlined text-2xl font-bold">precision_manufacturing</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-lg font-bold leading-none">ReloadLog</h1>
+<p class="text-xs text-slate-500 dark:text-[#92c9a0]">Precision Tracking</p>
+</div>
+</div>
+<!-- Nav Links -->
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-sm font-medium">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors" href="#">
+<span class="material-symbols-outlined">target</span>
+<span class="text-sm font-medium">Range Sessions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors mt-8" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-3 bg-primary text-background-dark font-bold rounded-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add_circle</span>
+<span>New Project</span>
+</button>
+</div>
+</aside>
+<!-- Main Workspace -->
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="h-16 border-b border-slate-200 dark:border-[#23482c] bg-white dark:bg-[#112215] flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-6 flex-1">
+<h2 class="text-xl font-bold">Dashboard</h2>
+<div class="relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-[#92c9a0]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-[#23482c] border-none rounded-lg text-sm focus:ring-1 focus:ring-primary transition-all" placeholder="Search projects, loads, components..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary/20 text-primary border border-primary/30 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-primary/30 transition-all">
+                        Quick Load
+                    </button>
+<div class="flex items-center gap-2 border-l border-slate-200 dark:border-[#23482c] ml-2 pl-4">
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-[#32673f] bg-cover bg-center" data-alt="User profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClBM6ie0qOmB7MiPA9pJ8Y0TBh-e_tefQ5Xqdy23jqsJYKry_r-Q11CqkvnouteDxsLPACX4NAvAuXiRkR77TcRY_bwu2FIrMVXVNjze5EG1qJ7As0zycqS_YeQh12Is1kl1WwM6mSMrbSz8iW_Eo5jfyLE6s-LOKLAXmGJJDNWctg2c5dPDG7khmhM2ghV0KjvfveyfWQKeFUOt47F3E-UlDiRUAdPaFJdZ6kdLJ7R67Ah9IBxPSai05nnMVB2rw3Wm3xgEW82sY0')"></div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto p-8">
+<div class="max-w-[1200px] mx-auto space-y-8">
+<!-- Stats Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#32673f] p-6 rounded-xl">
+<div class="flex items-center justify-between mb-2">
+<p class="text-slate-500 dark:text-[#92c9a0] text-sm font-medium">Total Projects</p>
+<span class="material-symbols-outlined text-primary">inventory</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold">14</h3>
+<span class="text-primary text-sm font-bold">+2 this month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#32673f] p-6 rounded-xl">
+<div class="flex items-center justify-between mb-2">
+<p class="text-slate-500 dark:text-[#92c9a0] text-sm font-medium">Recent Best Group</p>
+<span class="material-symbols-outlined text-primary">ads_click</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold">0.38 <span class="text-sm font-normal text-slate-400">in</span></h3>
+<span class="text-slate-400 text-xs">.308 Win Load v4</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#32673f] p-6 rounded-xl">
+<div class="flex items-center justify-between mb-2">
+<p class="text-slate-500 dark:text-[#92c9a0] text-sm font-medium">Rounds Loaded (Month)</p>
+<span class="material-symbols-outlined text-primary">layers</span>
+</div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-bold">1,250</h3>
+<span class="text-red-500 text-sm font-bold">-15%</span>
+</div>
+</div>
+</section>
+<!-- Projects and Activity Container -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Recent Projects Grid (Left 2/3) -->
+<div class="xl:col-span-2 space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold">Recent Projects</h2>
+<a class="text-sm font-medium text-primary hover:underline" href="#">View all</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Project Card 1 -->
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#23482c] rounded-xl overflow-hidden hover:border-primary/50 transition-all group">
+<div class="h-32 bg-slate-200 dark:bg-[#23482c] relative bg-cover bg-center" data-alt="Close-up of brass casings for .308 Win" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJdI_xVM4pmWV_31gl2IcGOsjX9QzlxYcLEHRMKHN3ez-1K6CqUxs9Z_wk5k98-DE5IWy9V_pyqNe5MvcpGRm5Z84N7-Rl1HrcBEdhIzr-afK2xX5x91RIA6t1vQawUV_JgY_twL5NmtLa0uRIKKHwmVZcQnmB6KAP_V7r4JRRUk6zrgq0C6w5bibf1B3hAiFii_AM9n_XF3ye0luWjH23mBD58eyT5LxUp36g8NQa2tIp0NtEVzYnVjnRBdMSX93YCd_OiERYw-s3')">
+<div class="absolute top-3 right-3">
+<span class="bg-primary text-background-dark text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter">Optimized</span>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div>
+<h4 class="font-bold text-lg">.308 Win - Long Range</h4>
+<p class="text-xs text-slate-500 dark:text-[#92c9a0]">Sierra TMK 175gr | Varget | Lapua Brass</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-[#23482c]">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-slate-400">Avg Group</span>
+<span class="text-sm font-bold text-primary">0.42 MOA</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-[10px] uppercase text-slate-400">Last Session</span>
+<span class="text-sm">2 days ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#23482c] rounded-xl overflow-hidden hover:border-primary/50 transition-all group">
+<div class="h-32 bg-slate-200 dark:bg-[#23482c] relative bg-cover bg-center" data-alt="Box of 9mm training ammunition" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLWr7CPe147r6BBDXss3EPmywYnzoSfk0OOywo-DwBewO_LV1dywNBs9AHcSDRQzMkcxeQCyIlxsLUuPsUeAakjFqKIEPXEdpUs6nxk8zqYmFtsJDJHHsGwrITf_Cgbt1YAvZ6AgB3oerLZ6AXMzTpTZ8l9-veqEa6DIiitKKAZ8HqF_1WiLJkhdaSHUbNYUuVnI-FH_wOdiJy-WXIHbx3P1hx96JEpmzPdfcgSSZQJZacm7nrCpjdV0vhRBO021Tp-OzlLnUl6VZZ')">
+<div class="absolute top-3 right-3">
+<span class="bg-slate-200 dark:bg-[#32673f] text-slate-700 dark:text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter">Tested</span>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div>
+<h4 class="font-bold text-lg">9mm Luger - Practice</h4>
+<p class="text-xs text-slate-500 dark:text-[#92c9a0]">115gr FMJ | Titegroup | Mixed Brass</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-[#23482c]">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-slate-400">Yield</span>
+<span class="text-sm font-bold">500 rnds</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-[10px] uppercase text-slate-400">Status</span>
+<span class="text-sm">In Production</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#23482c] rounded-xl overflow-hidden hover:border-primary/50 transition-all group">
+<div class="h-32 bg-slate-200 dark:bg-[#23482c] relative bg-cover bg-center" data-alt="Technical drawing of a 6.5 Creedmoor cartridge" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjiY4TEp5aXNwmXZYwohJsuTL1PJAVv4IdMpxLAyjBxhVkolpSF8myywVAKkE46pwcr30xhqJHwnHkdD8GkPePC5r-6ex5npx_nokdVs-sS0R4fFZn9hoHSShXnrZ7JXvH0KOJxux6AlIesaJ5pFtdmTU_x5m9Hh_UQOGHTGNi5gBrQKTQq6cQj-sgRZ_Lnt99JSoDJR91xM2HBRSortE6bz9czmmL-5fCHZ0_69KRhaslcr4vBuEPBokEPEiPoYQRzDejcPkyctTu')">
+<div class="absolute top-3 right-3">
+<span class="bg-yellow-500/20 text-yellow-500 border border-yellow-500/30 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter">Drafting</span>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div>
+<h4 class="font-bold text-lg">6.5 Creedmoor - PRS</h4>
+<p class="text-xs text-slate-500 dark:text-[#92c9a0]">Hornady 140gr ELD-M | H4350</p>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-[#23482c]">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-slate-400">Dev Stage</span>
+<span class="text-sm font-bold">Ladder Test</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-[10px] uppercase text-slate-400">Modified</span>
+<span class="text-sm">5h ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Add New Project Placeholder -->
+<div class="border-2 border-dashed border-slate-200 dark:border-[#23482c] rounded-xl flex flex-col items-center justify-center p-8 hover:bg-slate-50 dark:hover:bg-[#1a2e1f] transition-colors cursor-pointer group">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-[#23482c] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">add</span>
+</div>
+<p class="text-sm font-bold text-slate-500 dark:text-[#92c9a0]">Start New Load Project</p>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed (Right 1/3) -->
+<div class="space-y-4">
+<h2 class="text-xl font-bold">Recent Activity</h2>
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#23482c] rounded-xl p-6">
+<div class="space-y-6 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-px before:bg-slate-200 dark:before:bg-[#23482c]">
+<!-- Activity Item 1 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center border-4 border-white dark:border-[#112215]">
+<span class="material-symbols-outlined text-[12px] text-background-dark font-bold">bolt</span>
+</div>
+<div class="space-y-1">
+<p class="text-sm"><span class="font-bold">New Chronograph Data</span> added for 6.5 CM</p>
+<p class="text-[11px] text-slate-400 uppercase">2 hours ago</p>
+<div class="mt-2 bg-slate-50 dark:bg-[#1a2e1f] p-2 rounded text-[12px] border border-slate-100 dark:border-[#23482c]">
+                                                Avg: 2715 fps | SD: 8.2
+                                            </div>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center border-4 border-white dark:border-[#112215]">
+<span class="material-symbols-outlined text-[12px] text-white font-bold">box</span>
+</div>
+<div class="space-y-1">
+<p class="text-sm"><span class="font-bold">Inventory Alert:</span> Primers low</p>
+<p class="text-[11px] text-slate-400 uppercase">1 day ago</p>
+<p class="text-xs text-red-400 italic">CCI No. 200 Large Rifle (&lt; 200 units)</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center border-4 border-white dark:border-[#112215]">
+<span class="material-symbols-outlined text-[12px] text-background-dark font-bold">check_circle</span>
+</div>
+<div class="space-y-1">
+<p class="text-sm"><span class="font-bold">Range Session Completed</span></p>
+<p class="text-[11px] text-slate-400 uppercase">3 days ago</p>
+<p class="text-xs text-slate-500 dark:text-[#92c9a0]">8 groups fired at 100yd with .308 Win</p>
+</div>
+</div>
+<!-- Activity Item 4 -->
+<div class="relative pl-8 opacity-60">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-slate-400 flex items-center justify-center border-4 border-white dark:border-[#112215]">
+<span class="material-symbols-outlined text-[12px] text-white font-bold">edit</span>
+</div>
+<div class="space-y-1">
+<p class="text-sm">Updated notes for 9mm practice load</p>
+<p class="text-[11px] text-slate-400 uppercase">1 week ago</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-xs font-bold text-slate-400 hover:text-primary transition-colors border-t border-slate-100 dark:border-[#23482c]">
+                                    Show Older Activity
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

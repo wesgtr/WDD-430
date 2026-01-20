@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Range Test Data Entry - ReloadLog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec49",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102215",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #193320;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #32673f;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#23482c] px-6 lg:px-10 py-3 bg-white dark:bg-[#102215] sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">ReloadLog</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 h-10 w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 dark:text-[#92c9a0] flex border-none bg-slate-100 dark:bg-[#23482c] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-[#23482c] focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-[#92c9a0] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search loads, sessions..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8">
+<nav class="hidden xl:flex items-center gap-6">
+<a class="text-slate-600 dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-slate-600 dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Load Data</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-1" href="#">Range Sessions</a>
+<a class="text-slate-600 dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Analytics</a>
+</nav>
+<button class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-background-dark text-sm font-bold leading-normal tracking-wide">
+<span class="truncate">Finalize Session</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="User profile avatar showing a professional shooter silhouette" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2zcPwDlLxseScvJJC-pviszECOFhX6glDSgGG7mrvn0WJ6GyjCVyfPB0Z_enz8ZmETp651X_siKMKixbS6CjqLpAfXrAGKzEajASu3Giezyt59lWuj5xutigS8na8_LIgtSYPeTAKMx55IsTCRMctEQ43WkbBgdwtKp3swwBMhhRXIUnMIULGmcs07V10VQJsTs5MV5dP2KrDjS-BumQHkezJJD8DeigJJ7JrHxPIVzpfgRnsC4kl7H22Nv0qndU9krd8mRB15LpF");'></div>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-[#23482c] bg-white dark:bg-[#102215] flex-col hidden lg:flex">
+<div class="p-6 flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider">Session ID: #RL-9921</h1>
+<p class="text-slate-500 dark:text-[#92c9a0] text-xs font-medium">6.5 Creedmoor - 140gr ELD-M</p>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer rounded-lg hover:bg-slate-100 dark:hover:bg-[#193320] transition-colors">
+<span class="material-symbols-outlined text-slate-500 dark:text-white">dashboard</span>
+<p class="text-slate-700 dark:text-white text-sm font-medium">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-[#23482c] text-primary">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-sm font-bold">Ballistics &amp; Data</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer rounded-lg hover:bg-slate-100 dark:hover:bg-[#193320] transition-colors">
+<span class="material-symbols-outlined text-slate-500 dark:text-white">thermostat</span>
+<p class="text-slate-700 dark:text-white text-sm font-medium">Environment</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer rounded-lg hover:bg-slate-100 dark:hover:bg-[#193320] transition-colors">
+<span class="material-symbols-outlined text-slate-500 dark:text-white">report_problem</span>
+<p class="text-slate-700 dark:text-white text-sm font-medium">Pressure Signs</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer rounded-lg hover:bg-slate-100 dark:hover:bg-[#193320] transition-colors">
+<span class="material-symbols-outlined text-slate-500 dark:text-white">track_changes</span>
+<p class="text-slate-700 dark:text-white text-sm font-medium">Target Plotter</p>
+</div>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-[#23482c]">
+<div class="bg-primary/5 rounded-lg p-3">
+<p class="text-[10px] text-primary font-bold uppercase mb-1">Status</p>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs text-slate-600 dark:text-[#92c9a0]">Session Active</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-6 lg:p-10">
+<div class="max-w-6xl mx-auto flex flex-col gap-8">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Range Test Data Entry</h2>
+<p class="text-slate-500 dark:text-[#92c9a0] text-base font-normal">Record performance and safety metrics for current load development.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 h-10 bg-white dark:bg-[#23482c] border border-slate-200 dark:border-none text-slate-900 dark:text-white text-sm font-bold rounded-lg hover:opacity-90">
+<span class="material-symbols-outlined text-sm">upload_file</span> Import Data
+                        </button>
+<button class="flex items-center gap-2 px-4 h-10 bg-primary text-background-dark text-sm font-bold rounded-lg hover:opacity-90">
+<span class="material-symbols-outlined text-sm">add_circle</span> Add Shot Row
+                        </button>
+</div>
+</div>
+<!-- Live Stats Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#193320] border border-slate-200 dark:border-none shadow-sm">
+<div class="flex justify-between items-center">
+<p class="text-slate-500 dark:text-[#92c9a0] text-sm font-medium uppercase">Avg Velocity</p>
+<span class="material-symbols-outlined text-primary text-xl">speed</span>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-bold">2745 <span class="text-sm font-normal text-slate-400">FPS</span></p>
+<p class="text-primary text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12 FPS vs. Load Min
+                        </p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#193320] border border-slate-200 dark:border-none shadow-sm">
+<div class="flex justify-between items-center">
+<p class="text-slate-500 dark:text-[#92c9a0] text-sm font-medium uppercase">Extreme Spread (ES)</p>
+<span class="material-symbols-outlined text-slate-400 text-xl">straighten</span>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-bold">22 <span class="text-sm font-normal text-slate-400">FPS</span></p>
+<p class="text-rose-500 dark:text-rose-400 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_down</span> -5 FPS deviation
+                        </p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#193320] border border-slate-200 dark:border-none shadow-sm">
+<div class="flex justify-between items-center">
+<p class="text-slate-500 dark:text-[#92c9a0] text-sm font-medium uppercase">Std Dev (SD)</p>
+<span class="material-symbols-outlined text-slate-400 text-xl">query_stats</span>
+</div>
+<p class="text-slate-900 dark:text-white text-3xl font-bold">6.4 <span class="text-sm font-normal text-slate-400">FPS</span></p>
+<p class="text-rose-500 dark:text-rose-400 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">warning</span> Out of 5.0 range
+                        </p>
+</div>
+</div>
+<!-- Main Entry Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Table Section (Ballistics) -->
+<div class="xl:col-span-2 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span> Chronograph Data
+                            </h3>
+</div>
+<div class="overflow-hidden rounded-xl border border-slate-200 dark:border-[#32673f] bg-white dark:bg-[#112215]">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-[#193320]">
+<tr>
+<th class="px-6 py-4 text-slate-600 dark:text-white text-xs font-bold uppercase tracking-wider w-20">Shot</th>
+<th class="px-6 py-4 text-slate-600 dark:text-white text-xs font-bold uppercase tracking-wider">Velocity (FPS)</th>
+<th class="px-6 py-4 text-slate-600 dark:text-white text-xs font-bold uppercase tracking-wider">Notes</th>
+<th class="px-6 py-4 text-slate-600 dark:text-[#92c9a0] text-xs font-bold uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-[#32673f]">
+<tr class="hover:bg-slate-50 dark:hover:bg-[#193320]/50 transition-colors">
+<td class="px-6 py-4 text-slate-500 dark:text-[#92c9a0] text-sm">1</td>
+<td class="px-6 py-4">
+<input class="bg-transparent border-none p-0 focus:ring-0 text-slate-900 dark:text-white text-sm w-full font-medium" type="number" value="2742"/>
+</td>
+<td class="px-6 py-4 text-slate-500 dark:text-[#92c9a0] text-sm">Clean cold bore shot</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline text-xs font-bold">DELETE</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-[#193320]/50 transition-colors">
+<td class="px-6 py-4 text-slate-500 dark:text-[#92c9a0] text-sm">2</td>
+<td class="px-6 py-4">
+<input class="bg-transparent border-none p-0 focus:ring-0 text-slate-900 dark:text-white text-sm w-full font-medium" type="number" value="2748"/>
+</td>
+<td class="px-6 py-4 text-slate-500 dark:text-[#92c9a0] text-sm">-</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline text-xs font-bold">DELETE</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-[#193320]/50 transition-colors">
+<td class="px-6 py-4 text-slate-500 dark:text-[#92c9a0] text-sm">3</td>
+<td class="px-6 py-4">
+<input class="bg-transparent border-none p-0 focus:ring-0 text-slate-900 dark:text-white text-sm w-full font-medium" type="number" value="2751"/>
+</td>
+<td class="px-6 py-4 text-slate-500 dark:text-[#92c9a0] text-sm">-</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline text-xs font-bold">DELETE</button>
+</td>
+</tr>
+<tr class="bg-slate-50/50 dark:bg-primary/5">
+<td class="px-6 py-4 text-slate-400 dark:text-[#92c9a0]/50 text-sm">4</td>
+<td class="px-6 py-4">
+<input class="bg-transparent border-none p-0 focus:ring-0 text-primary placeholder:text-slate-400 dark:placeholder:text-[#92c9a0]/40 text-sm w-full font-bold" placeholder="Enter velocity..." type="number"/>
+</td>
+<td class="px-6 py-4">
+<input class="bg-transparent border-none p-0 focus:ring-0 text-slate-500 dark:text-[#92c9a0] placeholder:text-slate-400 dark:placeholder:text-[#92c9a0]/40 text-sm w-full" placeholder="Add note..." type="text"/>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="text-xs text-slate-400 italic">Press Enter</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Target / Accuracy Section -->
+<div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#32673f] rounded-xl p-6">
+<h4 class="text-sm font-bold uppercase mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">my_location</span> Group Accuracy
+                                </h4>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-sm text-slate-600 dark:text-[#92c9a0]">Best Group (5 shots)</label>
+<div class="flex items-center gap-2">
+<input class="w-20 bg-slate-100 dark:bg-[#23482c] border-none rounded text-sm text-right font-bold text-primary" type="text" value="0.452"/>
+<span class="text-xs text-slate-400">MOA</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<label class="text-sm text-slate-600 dark:text-[#92c9a0]">Avg Group Size</label>
+<div class="flex items-center gap-2">
+<input class="w-20 bg-slate-100 dark:bg-[#23482c] border-none rounded text-sm text-right font-bold" type="text" value="0.615"/>
+<span class="text-xs text-slate-400">MOA</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-[#23482c]">
+<button class="w-full flex items-center justify-center gap-2 py-2 bg-slate-100 dark:bg-[#23482c] text-slate-900 dark:text-white rounded-lg text-sm font-bold hover:bg-primary/20">
+<span class="material-symbols-outlined text-sm">brush</span> Open Visual Plotter
+                                        </button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#32673f] rounded-xl p-6 overflow-hidden relative group">
+<h4 class="text-sm font-bold uppercase mb-4">Target Preview</h4>
+<div class="aspect-square w-full rounded border-2 border-dashed border-slate-200 dark:border-[#32673f] flex items-center justify-center relative bg-slate-50 dark:bg-[#0c180f]">
+<!-- Simplified Target Plotter Visual -->
+<div class="size-32 rounded-full border border-slate-300 dark:border-[#23482c] flex items-center justify-center">
+<div class="size-20 rounded-full border border-slate-300 dark:border-[#23482c] flex items-center justify-center">
+<div class="size-8 rounded-full border border-slate-300 dark:border-[#23482c] bg-slate-200 dark:bg-[#1a3320]"></div>
+</div>
+</div>
+<!-- Mock bullet holes -->
+<div class="absolute size-2 bg-primary rounded-full" style="top: 45%; left: 48%;"></div>
+<div class="absolute size-2 bg-primary rounded-full" style="top: 47%; left: 51%;"></div>
+<div class="absolute size-2 bg-primary rounded-full" style="top: 44%; left: 52%;"></div>
+<div class="absolute size-2 bg-primary rounded-full" style="top: 49%; left: 49%;"></div>
+<div class="absolute size-2 bg-primary rounded-full shadow-[0_0_8px_#13ec49]" style="top: 46%; left: 47%;"></div>
+<div class="absolute inset-0 bg-background-dark/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="px-4 py-2 bg-primary text-background-dark font-bold text-xs rounded-full">EDIT PLOT</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Content (Environment & Safety) -->
+<div class="flex flex-col gap-6">
+<!-- Environmental Card -->
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#32673f] rounded-xl p-6">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">cloud_queue</span> Environment
+                            </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-slate-400 dark:text-[#92c9a0] uppercase">Temp (°F)</label>
+<input class="bg-slate-50 dark:bg-[#193320] border-slate-200 dark:border-none rounded-lg text-sm text-slate-900 dark:text-white font-medium focus:ring-primary h-10" type="number" value="72"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-slate-400 dark:text-[#92c9a0] uppercase">Humidity (%)</label>
+<input class="bg-slate-50 dark:bg-[#193320] border-slate-200 dark:border-none rounded-lg text-sm text-slate-900 dark:text-white font-medium focus:ring-primary h-10" type="number" value="45"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-slate-400 dark:text-[#92c9a0] uppercase">Pressure (inHg)</label>
+<input class="bg-slate-50 dark:bg-[#193320] border-slate-200 dark:border-none rounded-lg text-sm text-slate-900 dark:text-white font-medium focus:ring-primary h-10" type="number" value="29.92"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-slate-400 dark:text-[#92c9a0] uppercase">Altitude (ft)</label>
+<input class="bg-slate-50 dark:bg-[#193320] border-slate-200 dark:border-none rounded-lg text-sm text-slate-900 dark:text-white font-medium focus:ring-primary h-10" type="number" value="1250"/>
+</div>
+</div>
+<button class="w-full mt-4 flex items-center justify-center gap-2 py-2 text-primary text-xs font-bold bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">sync</span> Sync from Station
+                            </button>
+</div>
+<!-- Safety / Pressure Signs Card -->
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#32673f] rounded-xl p-6">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-rose-500">warning</span> Pressure Signs
+                            </h3>
+<div class="flex flex-col gap-3">
+<label class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-[#193320] cursor-pointer hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors">
+<span class="text-sm font-medium">Flattened Primers</span>
+<input class="form-checkbox size-5 text-primary bg-background-dark border-slate-400 dark:border-[#32673f] rounded focus:ring-offset-0 focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-[#193320] cursor-pointer hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors">
+<span class="text-sm font-medium">Cratered Primers</span>
+<input class="form-checkbox size-5 text-primary bg-background-dark border-slate-400 dark:border-[#32673f] rounded focus:ring-offset-0 focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-[#193320] cursor-pointer hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors">
+<span class="text-sm font-medium">Heavy Bolt Lift</span>
+<input checked="" class="form-checkbox size-5 text-rose-500 bg-background-dark border-slate-400 dark:border-[#32673f] rounded focus:ring-offset-0 focus:ring-rose-500" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-[#193320] cursor-pointer hover:bg-slate-100 dark:hover:bg-[#23482c] transition-colors">
+<span class="text-sm font-medium">Brass Flow (Ejector)</span>
+<input class="form-checkbox size-5 text-primary bg-background-dark border-slate-400 dark:border-[#32673f] rounded focus:ring-offset-0 focus:ring-primary" type="checkbox"/>
+</label>
+</div>
+<div class="mt-4 p-3 border border-rose-500/50 bg-rose-500/10 rounded-lg">
+<p class="text-[10px] font-bold text-rose-500 uppercase flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-xs">emergency</span> High Alert
+                                </p>
+<p class="text-xs text-rose-400">Manual inspection required. Heavy bolt lift indicates possible over-pressure.</p>
+</div>
+</div>
+<!-- Notes Section -->
+<div class="bg-white dark:bg-[#112215] border border-slate-200 dark:border-[#32673f] rounded-xl p-6">
+<h3 class="text-sm font-bold uppercase mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">edit_note</span> Session Observations
+                            </h3>
+<textarea class="w-full h-32 bg-slate-50 dark:bg-[#193320] border-slate-200 dark:border-none rounded-lg text-sm text-slate-900 dark:text-white p-3 focus:ring-primary" placeholder="Wind gusty from 3 o'clock. Rifle suppressed. Target distance 100yd."></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Content Info -->
+<footer class="mt-12 py-8 border-t border-slate-200 dark:border-[#23482c] flex flex-col md:flex-row justify-between items-center text-slate-400 text-xs">
+<p>© 2024 ReloadLog Precision Tracker. Data verified locally.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">Export CSV</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>
