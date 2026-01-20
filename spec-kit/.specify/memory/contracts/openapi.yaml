@@ -1,0 +1,8 @@
+openapi: 3.0.3
+info:
+  title: ReloadLog API
+  version: 0.1.0
+servers:
+  - url: /api
+
+# Canonical contract: specs/001-reloadlog-webapp/contracts/openapi.yaml
