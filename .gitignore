@@ -1,0 +1,9 @@
+
+.env
+
+reloadlog-app/.env
+reloadlog-app/node_modules
+reloadlog-app/.vscode
+reloadlog-app/dist
+reloadlog-app/build
+reloadlog-app/.idea
